@@ -27,13 +27,16 @@ export class CartService {
   }
 
   private async initStorage() {
+  try {
     await this.storage.create();
     this.storageInitialized = true;
     const storedCart = await this.storage.get('cart');
-    if (storedCart) {
-      this.cartSubject.next(storedCart);
-    }
+    if (storedCart) this.cartSubject.next(storedCart);
+  } catch(err) {
+    console.error('Storage init failed', err);
   }
+}
+
 
   private saveCart() {
     if (this.storageInitialized) {

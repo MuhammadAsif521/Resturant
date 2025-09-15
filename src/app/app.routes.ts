@@ -3,17 +3,13 @@ import { MenuPage } from './pages/menu/menu.page';
 import { CartPage } from './pages/cart/cart.page';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'menu',
-    pathMatch: 'full',
-  },
+  { path: '', redirectTo: 'menu', pathMatch: 'full' },
   {
     path: 'menu',
-    component: MenuPage,
+    loadComponent: () => import('./pages/menu/menu.page').then(m => m.MenuPage)
   },
   {
     path: 'cart',
-    component: CartPage,
-  },
+    loadComponent: () => import('./pages/cart/cart.page').then(m => m.CartPage)
+  }
 ];

@@ -11,7 +11,7 @@
         <ion-list>
           <!-- Menu Page -->
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerLink="/menu" routerDirection="root" routerLinkActive="selected">
+            <ion-item (click)="goTo('menu')" [class.selected]="utilSer.currentPage === 'menu'">
               <ion-icon slot="start" name="restaurant-outline"></ion-icon>
               <ion-label>Menu Page</ion-label>
             </ion-item>
@@ -19,14 +19,16 @@
 
           <!-- Cart Page with Badge -->
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerLink="/cart" routerDirection="root" routerLinkActive="selected">
-              <ion-icon slot="start" name="cart-outline"></ion-icon>
+            <ion-item (click)="goTo('cart')">
+              <ion-icon slot="start" name="cart-outline" #cartIcon></ion-icon>
               <ion-label>Cart Page</ion-label>
-              <!-- ✅ Badge only shown when count > 0 -->
-              <ion-badge color="danger" *ngIf="(totalQuantity$ | async) as count" [hidden]="count === 0">
-                {{ count }}
+              @if(totalQuantity > 0){
+              <ion-badge color="danger">
+                {{ totalQuantity }}
               </ion-badge>
+            }
             </ion-item>
+
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
