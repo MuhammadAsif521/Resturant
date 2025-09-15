@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>🛒 Your Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding cart-page">
+  <ion-grid>
+    <ion-row>
+      @for (item of cartItems$ | async; track $index) {
+      <ion-col size="12" size-md="6" size-lg="12">
+        <ion-card class="cart-card">
+          <ion-item lines="none">
+            <ion-thumbnail slot="start" class="thumb">
+              <img [src]="item.product.image" [alt]="item.product.name" />
+            </ion-thumbnail>
+
+            <ion-label class="item-info">
+              <h2 class="item-name">{{ item.product.name }}</h2>
+              <p class="item-price">Rs. {{ item.product.price }}</p>
+              <p class="item-subtotal">
+                Subtotal: Rs. {{ item.product.price * item.quantity }}
+              </p>
+            </ion-label>
+          </ion-item>
+
+          <div class="controls">
+<ion-button 
+  size="small" 
+  fill="none" 
+  class="qty-btn" 
+  (click)="decrease(item.product.id)" 
+  [disabled]="item.quantity === 1">
+  -
+</ion-button>
+            <span class="qty">{{ item.quantity }}</span>
+            <ion-button size="small" fill="none" class="qty-btn" (click)="increase(item.product.id)">+</ion-button>
+
+            <ion-button size="small" color="danger" class="remove-btn" (click)="remove(item.product.id)">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <!-- Optional: Empty cart message -->
+  <ng-container *ngIf="(cartItems$ | async)?.length === 0">
+    <div style="text-align:center; padding:40px;">Your cart is empty.</div>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="total-row">
+      <span class="total-label">Total</span>
+      <span class="total-value">Rs. {{ total$ | async }}</span>
+    </div>
+  </ion-toolbar>
+</ion-footer>

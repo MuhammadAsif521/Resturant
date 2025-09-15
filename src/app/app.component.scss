@@ -1,0 +1,79 @@
+/* Toolbar styling */
+ion-toolbar {
+  --background: #2c3e50; /* dark navy */
+  --color: #fff;
+  font-weight: 700;
+}
+
+/* Split pane styling */
+ion-split-pane {
+  --side-max-width: 240px;
+  --side-min-width: 240px;
+}
+
+/* Menu styling */
+ion-menu {
+  --width: 240px;
+}
+
+/* Menu item styling */
+ion-menu ion-item {
+  --color: #2c3e50;
+  font-weight: 600;
+  margin: 4px 8px;
+  border-radius: 8px;
+}
+
+/* Active menu item */
+ion-menu ion-item.selected {
+  --color: #007bff;
+  --background: #e3f2fd;
+  font-weight: 700;
+}
+
+/* Menu item hover effect */
+ion-menu ion-item:hover {
+  --background: #f5f5f5;
+}
+
+/* Menu header styling */
+ion-menu ion-header ion-toolbar {
+  --background: #2c3e50;
+  --color: #fff;
+}
+
+/* Menu content styling */
+ion-menu ion-content {
+  --background: #f8f9fa;
+  --padding-top: 8px;
+}
+
+/* Hide hamburger menu button on large screens (when split pane is active) */
+@media (min-width: 992px) {
+  ion-menu-button {
+    display: none !important;
+  }
+}
+
+/* Show hamburger menu button on small screens */
+@media (max-width: 991px) {
+  ion-menu-button {
+    --color: #fff;
+    font-size: 1.6rem;
+    display: block !important;
+  }
+}
+
+/* Ensure menu items are visible */
+ion-menu ion-list {
+  background: transparent;
+}
+
+ion-menu ion-item ion-icon {
+  color: #2c3e50;
+  margin-right: 16px;
+}
+
+ion-menu ion-item.selected ion-icon {
+  color: #007bff;
+}

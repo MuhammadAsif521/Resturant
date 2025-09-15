@@ -1,3 +1,37 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content" when="lg">
+    <ion-menu side="start" menuId="main-menu" contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="dark">
+          <ion-title>🍽️ Restaurant App</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <!-- Menu Page -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/menu" routerDirection="root" routerLinkActive="selected">
+              <ion-icon slot="start" name="restaurant-outline"></ion-icon>
+              <ion-label>Menu Page</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Cart Page with Badge -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="/cart" routerDirection="root" routerLinkActive="selected">
+              <ion-icon slot="start" name="cart-outline"></ion-icon>
+              <ion-label>Cart Page</ion-label>
+              <!-- ✅ Badge only shown when count > 0 -->
+              <ion-badge color="danger" *ngIf="(totalQuantity$ | async) as count" [hidden]="count === 0">
+                {{ count }}
+              </ion-badge>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
