@@ -7,9 +7,9 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
-import { CartService, CartItem } from 'src/app/services/cart';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CartService, CartItem } from 'src/app/shared/services/cart';
 
 addIcons({ trashOutline });
 
@@ -40,10 +40,11 @@ addIcons({ trashOutline });
 })
 export class CartPage {
   private toastCtrl = inject(ToastController);
+  private cartService = inject(CartService);
   cartItems$: Observable<CartItem[]>;
   total$: Observable<number>;
 
-  constructor(private cartService: CartService) {
+  constructor() {
     this.cartItems$ = this.cartService.cart$;
     this.total$ = this.cartService.cart$.pipe(
       map(items => items.reduce((sum, i) => sum + i.product.price * i.quantity, 0))

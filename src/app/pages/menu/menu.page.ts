@@ -1,6 +1,5 @@
 // menu.page.ts
 import { Component, inject } from '@angular/core';
-import { CartService, Product } from 'src/app/services/cart';
 import { 
   IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle,
   IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader,
@@ -9,6 +8,7 @@ import {
 } from '@ionic/angular/standalone';
 import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService, Product } from 'src/app/shared/services/cart';
 
 @Component({
   selector: 'app-menu',

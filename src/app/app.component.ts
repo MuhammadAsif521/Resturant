@@ -1,31 +1,13 @@
-// app.component.ts
 import { Component, inject } from '@angular/core';
 import { MenuController, IonApp, IonSplitPane, IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonMenuToggle, IonItem, IonIcon, IonLabel, IonBadge, IonRouterOutlet } from '@ionic/angular/standalone';
-import { Router, RouterModule } from '@angular/router';
-import { CartService } from './services/cart';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UtilityService } from './services/utility.service';
+import { CartService } from './shared/services/cart';
+import { UtilityService } from './shared/services/utility.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    IonApp,
-    IonSplitPane,
-    IonMenu,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonList,
-    IonMenuToggle,
-    IonItem,
-    IonIcon,
-    IonLabel,
-    IonBadge,
-    IonRouterOutlet
-  ],
+  imports: [MenuController, IonApp, IonSplitPane, IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonMenuToggle, IonItem, IonIcon, IonLabel, IonBadge, IonRouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -41,8 +23,8 @@ export class AppComponent {
     ).subscribe(count => this.totalQuantity = count);
   }
 
-goTo(page: string) {
-  this.utilSer.navigateTo(page);  
-  this.menuCtrl.close('main-menu');
-}
+  goTo(page: string) {
+    this.utilSer.navigateTo(page);
+    this.menuCtrl.close('main-menu');
+  }
 }
