@@ -1,15 +1,16 @@
-ion-toolbar {
-  --background: linear-gradient(135deg, #4caf50, #81c784);
+ ion-toolbar {
+  --background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+
   ion-title {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     color: #fff;
   }
 }
 
 ion-content {
-  --background: #f2f2f2;
+  --background: #f8f9fa;
 }
 
 .menu-card {
@@ -92,6 +93,7 @@ ion-content {
     font-weight: 600;
     height: 44px;
     margin-top: 8px;
+    color: white;
 
     ion-icon {
       font-size: 1.2rem;
@@ -101,6 +103,39 @@ ion-content {
       transform: translateY(-2px);
       --box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
     }
+  }
+}
+/* 🔎 Searchbar Styling */
+.search-container {
+  display: flex;
+  justify-content: left;
+  margin: 12px 0 18px 0;
+}
+
+.custom-searchbar {
+  width: 75%;
+  max-width: 300px;
+  --background: #f1f1f1;
+--color: #000;
+--placeholder-color: #666;
+--icon-color: #666;
+
+
+  border-radius: 25px;
+  --border-radius: 25px;
+
+  text-align: center; /* center placeholder text */
+  --padding-start: 12px;
+  --padding-end: 12px;
+
+  font-size: 0.95rem;
+  
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .custom-searchbar {
+    width: 90%;
   }
 }
 
@@ -156,4 +191,5 @@ ion-col {
       height: 40px;
     }
   }
+  
 }
